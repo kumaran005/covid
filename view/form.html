@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet"type="text/css" href="/css/style.css">
+
+    <title>REMDESIVIR DISTRIBUTION
+    </title>
+  </head>
+  <body>
+
+    <!-- --------------------------------main -------------------------------------------------------------------->
+  
+    <section id="form ">
+      
+      <div class="container">
+    
+        <div class="card my-3">
+          
+          <div class="card-header">
+            <div class="row">
+              <div class="col-md-3">
+                <img src="img\tnlogo.png"class="img-fluid"alt="logo"width="80">
+              </div>
+          <div class="col-md-6 mt-3 text-center">
+            <h5 class="card-title"
+            ><span>Government of Tamilnadu</span><br>
+Tamilnadu Medical Services Corporation <br>- Remdesivir Sales Depot, <br>
+Tirunelveli Medical College, Tirunelveli - 627011
+</h5>
+          </div>
+          <div class="col-md-3"style="text-align:end">
+            <img src="img\logo.gif"class="img-fluid"alt="logo"width="80">
+          </div>
+          </div>
+          </div>
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Medicine</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Report</a>
+            </li>
+          
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+
+              <section id="candetails" class="p-3">
+                <div class="container">
+
+<form action="/submit" method="POST">
+
+                  <div class="row">
+                    <div class="col-md-5">
+                      <div class="form-group">
+                        <label for="exampleFormControlInput1" class="text-danger"> Aadhar Number
+                          *</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="patient_aadhaar"Required/>
+
+                      </div>
+                    </div>
+                    <div class="col-md-1 mt-2">
+                      <button type="submit" class="btn btn-info btn-sm mt-3">Verify Aadhar</button>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="exampleFormControlInput2">
+                          Name of the Patient
+
+                          </label>
+                        <input type="text" class="form-control" id="exampFormControlInput2" name="patient_name"/>
+                      </div>
+                    </div>
+                   
+                   
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="exampleFormControlInput3" class=""> Age
+                      </label>
+                    <input type="text" class="form-control" id="exampleFormControlInput3" name="patient_age"/>
+
+                  </div>
+              
+                </div>
+                
+                <div class="col-md-6">
+                  <div class="form-group  p-1">
+                    <label for="exampleFormControlSelect2" class="">Gender
+                    </label>
+                    <div class="d-flex " id="radio">
+                      <div class="form-check form-check-inline ">
+                        <input class="form-check-input" type="radio" name="male"  id="inlineRadio1"/>
+                        <label class="form-check-label" for="inlineRadio1">Male </label>
+                      </div>
+                      <div class="form-check form-check-inline  ">
+                        <input class="form-check-input" type="radio" name="female" id="inlineRadio2"/>
+                        <label class="form-check-label" for="inlineRadio2">Female</label>
+                      </div>
+                      <div class="form-check form-check-inline  ">
+                        <input class="form-check-input" type="radio" name="third"  id="inlineRadio2"/>
+                        <label class="form-check-label" for="inlineRadio2">Third Gender</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="exampleFormControlTextarea9"> Address
+                    </label>
+                    <textarea class="form-control" name="patient_address" id="exampleFormControlTextarea9" rows="2"></textarea>
+                  </div>
+                </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="exampleFormControlInput10">
+                     Mobile Number of Patient           
+                             </label>
+                    <input type="number" name="patient_phno" class="form-control" placeholder="" pattern="[6-9]{1}[0-9]{9}"/>            
+                        </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="exampleFormControlInput6">
+                    Name of Attender
+
+                    </label>
+                  <input type="text" class="form-control" id="exampFormControlInput6" name="attendar_name"/>
+                </div>
+              </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="exampleFormControlInput7" class=""> Aadhar Number
+              
+                
+                </label>
+              <input type="text" class="form-control" id="exampleFormControlInput7" name="attendar_aadhaar"/>
+
+            </div>
+          </div>
+  
+        
+         
+        
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="exampleFormControlInput15">
+                Name of Referring Doctor
+
+                </label>
+              <input type="text" class="form-control" id="exampFormControlInput15" name="ref_doctor"/>
+            </div>
+          </div>
+         
+        
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="exampleFormControlInput15">
+                PCR Report / ICMR Number
+
+
+                </label>
+              <input type="text" class="form-control" id="exampFormControlInput15" name="pcr_icmr"/>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="exampleFormControlInput1512">
+                CT Scan ID Number
+
+
+                </label>
+              <input type="text" class="form-control" id="exampFormControlInput1512" name="ct_scan_id"/>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="exampleFormControlInput115">
+                CT Scan Centre
+
+
+
+                </label>
+              <input type="text" class="form-control" id="exampFormControlInput115" name="ct_scan_centre"/>
+            </div>
+          </div>
+       
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="exampleFormControlInput11">
+                Mobile Number of Attender
+
+                </label>
+                <input type="number" name="attendar_phno" class="form-control" placeholder="" pattern="[6-9]{1}[0-9]{9}"/>                   
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="exampleFormControlInput11">
+                Receipt Number
+              </label>
+                <input type="text" name="receipt_no" class="form-control" placeholder="" />   
+              
+              </div>
+          </div>
+       
+               
+           
+             <div class="col-md-9"></div>
+                  <div class="col-md-3">
+                    <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                    <button type="button" class="btn btn-secondary btn-sm">Print</button>
+
+                    <button type="" class="btn btn-danger btn-sm">Reset</button>
+
+                  </div>
+                </div>
+</form>
+              </section>
+            </div>
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+          </div>
+      
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- -----------------------------------------js file---------------------------------------------------------------->
+    
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+
+    <!-- Option 2: jQuery, Popper.js, and Bootstrap JS
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    -->
+   
+  </body>
+</html>

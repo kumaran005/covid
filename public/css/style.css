@@ -1,0 +1,44 @@
+body
+{
+    background: linear-gradient( 0deg, rgb(27 24 26 / 30%), #21252905);
+ 
+}
+input,.form-control{
+    border:none;
+    border-bottom: 1px solid rgb(221, 217, 217)!important;
+    margin-top: -11px;
+
+}
+textarea{
+    border: 1px solid rgb(221, 217, 217)!important;
+}
+#radio,label,input,.form-control{
+    font-size: 16px;
+}
+
+span{
+    font-size: 30px;
+}
+/* label {
+    text-transform: lowercase;
+} */
+.btn-info{
+    width: 89px;
+    position: relative;
+    left: -17px;
+}
+.form-control:focus {
+    border-bottom: 3px solid #243b55 !important;
+    box-shadow: none;
+}
+.btn{
+    font-size: 12px;
+}
+/* label:first-letter {
+    text-transform: uppercase;
+} */
+.card-header{
+    background: #00adff0f;
+
+}
+/*//////////////////////// //media queries//////////////////////////////////// */
