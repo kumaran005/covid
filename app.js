@@ -3,6 +3,8 @@ var mysql = require('mysql');
 var bodyParser = require('body-parser');
 
 var app = express();
+app.set('view engine', 'html');
+app.set('view',__dirname);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -32,17 +34,28 @@ app.get('/',(req,res)=>{
 
 app.post('/submit',(req,res)=>{
     
-   var x = Math.floor((Math.random()*2)+1);
-  
+    var x = Math.floor(Math.random()*1E16)
+    //date
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    
+    today = mm + '/' + dd + '/' + yyyy;
+    // console.log(today);
+
    // patient
   
     var patient_name = req.body.patient_name;
-    var patient_id = patient_name.substring(0,3) + x;
+    var patient_id = x;
     var patient_age = req.body.patient_age;
     var patient_aadhaar = req.body.patient_aadhaar;
     var patient_gender = req.body.patient_gender;
     var patient_address = req.body.patient_address;
     var patient_phno = req.body.patient_phno;
+
+    // console.log("name"+patient_name);
+    // console.log("id"+patient_id);
     
     // attendar
 
@@ -68,50 +81,46 @@ app.post('/submit',(req,res)=>{
     // console.log("aadhaar:"+patient_aadhaar);
     
     conn.query(sql,(err,result)=>{
+        var message = '';
 
         console.log("Total Records:- " + result[0].aadhaar);
 
-        if(result[0].aadhaar > 0){
+        if(result[0].aadhaar > 0)
+        {
             console.log("Aadhaar already exists");
+            check = (req,res)=>{
+                message = "Data Already exists ";
+                // res.render(__dirname + "view/form.html",{message:message});
+                res.sendFile('view/form.html',{root:__dirname,message:message});
+            };
         }
 
         else
         
         {
 
-            var sql = "INSERT INTO `covid`.`patient`(`patient_id`,`patient_name`,`patient_age`,`patient_aadhaar`,`patient_gender`,`patient_address`,`patient_phno`) VALUES ('" + patient_id + "','" + patient_name + "','" + patient_age + "','" + patient_aadhaar + "','" + patient_gender + "','" + patient_address + "','" + patient_phno + "')";
-                conn.query(sql,(err, result) => {
-                    if (err) throw err;
-                    console.log("1 record inserted");
-                    res.end();
-                });
-                
-            var sql = "INSERT INTO `covid`.`attendar`(`patient_id`,`attendar_name`,`attendar_aadhaar`,`ref_doctor`,`attendar_phno`) VALUES('"+patient_id+"','"+attendar_name+"','"+attendar_aadhaar+"','"+ref_doctor+"','"+attendar_phno+"')";
-                conn.query(sql,(err,result)=>{
-                    if (err) throw err;
-                    console.log("1 record inserted");
-                    res.end();
-                });
+            var sql = "INSERT INTO `covid`.`patient`(`patient_id`,`patient_name`,`patient_age`,`patient_aadhaar`,`patient_gender`,`patient_address`,`patient_phno`,`date`) VALUES ('" + patient_id + "','" + patient_name + "','" + patient_age + "','" + patient_aadhaar + "','" + patient_gender + "','" + patient_address + "','" + patient_phno + "','"+today+"')";
+                conn.query(sql,(err, data) => {
+                    
+                    var sql = "INSERT INTO `covid`.`attendar`(`patient_id`,`attendar_name`,`attendar_aadhaar`,`ref_doctor`,`attendar_phno`,`date`) VALUES('"+patient_id+"','"+attendar_name+"','"+attendar_aadhaar+"','"+ref_doctor+"','"+attendar_phno+"','"+today+"')";
+                        conn.query(sql,(err,data)=>{                
+                            
+                            var sql = "INSERT INTO `covid`.`medicine`(`patient_id`,`ct_scan_id`,`ct_scan_centre`,`pcr_icmr`,`receipt_no`,`date`) VALUES('"+patient_id+"','"+ct_scan_id+"','"+ct_scan_centre+"','"+pcr_icmr+"','"+receipt_no+"','"+today+"')";
+                                conn.query(sql,(err,data)=>{   
 
-            var sql = "INSERT INTO `covid`.`medicine`(`patient_id`,`ct_scan_id`,`ct_scan_centre`,`pcr_icmr`,`receipt_no`) VALUES('"+patient_id+"','"+ct_scan_id+"','"+ct_scan_centre+"','"+pcr_icmr+"','"+receipt_no+"')";
-                conn.query(sql,(err,result)=>{   
-                    if (err) throw err;
-                    console.log("1 record inserted");
-                    res.end();
-
+                                    message = "Successfully Submitted!";
+                                    // res.render(__dirname +'form.html',{ message, userData: data });
+                                    res.sendFile('view/form.html',{root:__dirname,message:message});
+                                    
+                                });
+                      
+                        });
+                  
                 });
        
         }
             
     });
-    
-   
-
-
-    // var sql = "INSERT INTO `covid`.`patient`(`patient_id`,`patient_name`,`patient_age`,`patient_aadhaar`) VALUES ('" + patient_id + "','" + patient_name + "','" + patient_age + "','" + patient_aadhaar + "')";
-    // conn.query(sql,(err,data)=>{
-    //     res.render('form.html',{userdata:data});
-    // });
 
 });
 
@@ -119,3 +128,4 @@ app.post('/submit',(req,res)=>{
 app.listen(80,()=>{
     console.log('server on 80')
 });
+

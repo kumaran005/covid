@@ -29,8 +29,9 @@ CREATE TABLE `attendar` (
   `attendar_aadhaar` varchar(900) DEFAULT NULL,
   `ref_doctor` varchar(900) DEFAULT NULL,
   `attendar_phno` varchar(900) DEFAULT NULL,
+  `date` varchar(900) DEFAULT NULL,
   PRIMARY KEY (`id`,`patient_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,6 +40,7 @@ CREATE TABLE `attendar` (
 
 LOCK TABLES `attendar` WRITE;
 /*!40000 ALTER TABLE `attendar` DISABLE KEYS */;
+INSERT INTO `attendar` VALUES (29,'1517196884864629','','','','',NULL),(30,'4651121047998217','someone','32523523','Rajakumaran V','893485934',NULL),(31,'7541036487135782','sfgds','235235','23523','464334634',NULL),(32,'5374561682056647','','','','',NULL),(33,'2968612626947','Rajakumaran V','6765757','excvb','345678765','05/11/2021');
 /*!40000 ALTER TABLE `attendar` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-05-10 21:48:57
+-- Dump completed on 2021-05-11 19:27:02
