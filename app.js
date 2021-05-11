@@ -31,17 +31,16 @@ app.get('/',(req,res)=>{
 
 
 app.post('/submit',(req,res)=>{
-    // console.log(req.body.patient_name);
-    console.log(req.body.patient_age);
-
-    var x = Math.floor(Math.random()*1E16)
-    // patient
-
-    var patient_id = x;
+    
+   var x = Math.floor((Math.random()*2)+1);
+  
+   // patient
+  
     var patient_name = req.body.patient_name;
+    var patient_id = patient_name.substring(0,3) + x;
     var patient_age = req.body.patient_age;
     var patient_aadhaar = req.body.patient_aadhaar;
-    var patient_gender = req.body.male;
+    var patient_gender = req.body.patient_gender;
     var patient_address = req.body.patient_address;
     var patient_phno = req.body.patient_phno;
     
@@ -59,9 +58,15 @@ app.post('/submit',(req,res)=>{
     var pcr_icmr = req.body.pcr_icmr;
     var receipt_no = req.body.receipt_no;
 
+    
+    // console.log('gender'+patient_gender);
+
+ 
+
     var sql = `SELECT COUNT(*) as aadhaar FROM covid.patient WHERE patient_aadhaar = "${patient_aadhaar}"`;
 
-    console.log("aadhaar:"+patient_aadhaar);
+    // console.log("aadhaar:"+patient_aadhaar);
+    
     conn.query(sql,(err,result)=>{
 
         console.log("Total Records:- " + result[0].aadhaar);
@@ -79,23 +84,26 @@ app.post('/submit',(req,res)=>{
                     if (err) throw err;
                     console.log("1 record inserted");
                     res.end();
-                 });
+                });
+                
             var sql = "INSERT INTO `covid`.`attendar`(`patient_id`,`attendar_name`,`attendar_aadhaar`,`ref_doctor`,`attendar_phno`) VALUES('"+patient_id+"','"+attendar_name+"','"+attendar_aadhaar+"','"+ref_doctor+"','"+attendar_phno+"')";
                 conn.query(sql,(err,result)=>{
                     if (err) throw err;
                     console.log("1 record inserted");
                     res.end();
                 });
+
             var sql = "INSERT INTO `covid`.`medicine`(`patient_id`,`ct_scan_id`,`ct_scan_centre`,`pcr_icmr`,`receipt_no`) VALUES('"+patient_id+"','"+ct_scan_id+"','"+ct_scan_centre+"','"+pcr_icmr+"','"+receipt_no+"')";
                 conn.query(sql,(err,result)=>{   
                     if (err) throw err;
                     console.log("1 record inserted");
                     res.end();
+
                 });
-    
-            }
+       
+        }
             
-    })
+    });
     
    
 
@@ -108,6 +116,6 @@ app.post('/submit',(req,res)=>{
 });
 
 
-app.listen(8080,()=>{
-    console.log('server on 8080')
+app.listen(80,()=>{
+    console.log('server on 80')
 });
